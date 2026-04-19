@@ -88,13 +88,16 @@
   <style>
     /* ─── Base ─────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       background-color: #0d0d08;
       color: #e8e8e0;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
+      width: 100%;
     }
+    /* Responsive iframe/embed safety */
+    iframe { max-width: 100%; }
 
     /* ─── Gold text shimmer ─────────────────────────── */
     .gold-text {
@@ -1374,7 +1377,7 @@
 <!-- ══════════════════════════════════════════
      CONTACT
 ══════════════════════════════════════════ -->
-<section id="contact" class="bg-alt py-28 px-6 lg:px-12">
+<section id="contact" class="bg-alt py-28 px-6 lg:px-12 overflow-x-hidden">
   <div class="max-w-7xl mx-auto">
 
     <!-- Heading -->
@@ -1389,7 +1392,7 @@
       </h2>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-12 items-start">
+    <div class="grid lg:grid-cols-2 gap-12 items-start w-full min-w-0">
 
       <!-- Left: Contact info -->
       <div data-aos="fade-right">
@@ -1482,15 +1485,17 @@
         </div>
       </div>
 
-      <!-- Right: Map placeholder -->
-      <div data-aos="fade-left">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.2103125678395!2d69.26982307647636!3d41.369515197102984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8fd6296bad67%3A0x641ebdb82cc8d6ac!2sSilver%20Rain%20FITNESS!5e0!3m2!1sru!2sus!4v1776636918931!5m2!1sru!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <!-- To embed real Google Maps, replace the above div with:
-        <iframe
-          src="https://www.google.com/maps/embed?pb=YOUR_EMBED_URL"
-          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-        -->
+      <!-- Right: Map -->
+      <div data-aos="fade-left" class="w-full min-w-0">
+        <div class="relative w-full overflow-hidden rounded-sm border border-gold-700 border-opacity-15" style="padding-top: 56.25%;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.2103125678395!2d69.26982307647636!3d41.369515197102984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8fd6296bad67%3A0x641ebdb82cc8d6ac!2sSilver%20Rain%20FITNESS!5e0!3m2!1sru!2sus!4v1776636918931!5m2!1sru!2sus"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
       </div>
     </div>
   </div>
