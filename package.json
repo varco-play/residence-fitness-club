@@ -1,0 +1,13 @@
+{
+  "name": "residence-fitness-club",
+  "version": "1.0.0",
+  "description": "Premium landing page for Residence Fitness Club",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000",
+    "build": "echo 'Static site — no build step required'"
+  },
+  "keywords": ["fitness", "landing-page", "premium", "club"],
+  "license": "UNLICENSED"
+}

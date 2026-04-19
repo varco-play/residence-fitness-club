@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Residence Fitness Club — Premium Fitness & Wellness</title>
+  <meta name="description" content="Residence Fitness Club is a premium fitness destination offering group classes, personal training, Olympic swimming pool, modern equipment, and expert coaches. Elevate your training today." />
+  <meta name="keywords" content="fitness club, premium gym, personal training, swimming pool, group classes, Residence Fitness Club" />
+  <meta property="og:title" content="Residence Fitness Club — Premium Fitness & Wellness" />
+  <meta property="og:description" content="A premium fitness destination for those who demand more — world-class training, expert coaches, and an unmatched environment." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50:  '#fdf9ee',
+              100: '#f9f0d0',
+              200: '#f2e09e',
+              300: '#e9ca63',
+              400: '#deb640',
+              500: '#C9A84C',
+              600: '#b8860b',
+              700: '#9a6f09',
+              800: '#7d5a0c',
+              900: '#674c0e',
+            },
+            dark: {
+              50:  '#f5f5f0',
+              100: '#e8e8e0',
+              200: '#c8c8b8',
+              300: '#a0a090',
+              400: '#787868',
+              500: '#585848',
+              600: '#3a3a2e',
+              700: '#282820',
+              800: '#181810',
+              900: '#0d0d08',
+              950: '#080805',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          backgroundImage: {
+            'gold-gradient': 'linear-gradient(135deg, #C9A84C 0%, #f2e09e 40%, #b8860b 70%, #C9A84C 100%)',
+            'gold-gradient-h': 'linear-gradient(90deg, #b8860b 0%, #deb640 30%, #f2e09e 50%, #deb640 70%, #b8860b 100%)',
+            'dark-gradient': 'linear-gradient(180deg, #0d0d08 0%, #181810 50%, #0d0d08 100%)',
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease forwards',
+            'shimmer': 'shimmer 2.5s linear infinite',
+            'pulse-gold': 'pulseGold 2s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: 0, transform: 'translateY(30px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% center' },
+              '100%': { backgroundPosition: '200% center' },
+            },
+            pulseGold: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0.6 },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ─── Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0d0d08;
+      color: #e8e8e0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── Gold text shimmer ─────────────────────────── */
+    .gold-text {
+      background: linear-gradient(135deg, #b8860b 0%, #deb640 25%, #f5e070 50%, #deb640 75%, #b8860b 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ─── Divider line ──────────────────────────────── */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C9A84C 30%, #f2e09e 50%, #C9A84C 70%, transparent);
+    }
+    .gold-divider-sm {
+      height: 1px;
+      width: 80px;
+      background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+      margin: 0 auto;
+    }
+
+    /* ─── Nav ───────────────────────────────────────── */
+    #navbar {
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(13,13,8,0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(201,168,76,0.15);
+    }
+    .nav-link {
+      position: relative;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c8c8b8;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: #C9A84C;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover { color: #deb640; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ─── Buttons ───────────────────────────────────── */
+    .btn-gold {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, #b8860b 0%, #deb640 50%, #b8860b 100%);
+      background-size: 200% auto;
+      color: #0d0d08;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 20px rgba(184,134,11,0.25);
+    }
+    .btn-gold:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184,134,11,0.4);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 13px 36px;
+      background: transparent;
+      color: #deb640;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,168,76,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      border-color: #deb640;
+      background: rgba(201,168,76,0.08);
+      color: #f2e09e;
+      transform: translateY(-2px);
+    }
+
+    /* ─── Hero ──────────────────────────────────────── */
+    .hero-bg {
+      position: relative;
+      background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 10% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
+                  #0d0d08;
+    }
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* ─── Section labels ────────────────────────────── */
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #C9A84C;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    /* ─── Cards ─────────────────────────────────────── */
+    .service-card {
+      background: linear-gradient(145deg, #181810, #111108);
+      border: 1px solid rgba(201,168,76,0.12);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover {
+      border-color: rgba(201,168,76,0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(201,168,76,0.06);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .coach-card {
+      background: linear-gradient(145deg, #181810, #111108);
+      border: 1px solid rgba(201,168,76,0.1);
+      transition: all 0.4s ease;
+      overflow: hidden;
+    }
+    .coach-card:hover {
+      border-color: rgba(201,168,76,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(201,168,76,0.05);
+    }
+    .coach-img-placeholder {
+      width: 100%; aspect-ratio: 4/5;
+      background: linear-gradient(145deg, #1e1e14 0%, #282820 50%, #1a1a10 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .coach-img-placeholder::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(13,13,8,0.9) 100%);
+    }
+
+    .pricing-card {
+      background: linear-gradient(145deg, #181810, #111108);
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .pricing-card.featured {
+      border-color: rgba(201,168,76,0.45);
+      background: linear-gradient(145deg, #1e1e12, #161610);
+    }
+    .pricing-card.featured::after {
+      content: 'MOST POPULAR';
+      position: absolute; top: 16px; right: -28px;
+      background: linear-gradient(135deg, #b8860b, #deb640);
+      color: #0d0d08;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      padding: 4px 36px;
+      transform: rotate(45deg);
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 25px rgba(201,168,76,0.08);
+    }
+
+    .facility-card {
+      position: relative; overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(201,168,76,0.08);
+    }
+    .facility-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(13,13,8,0.92) 100%);
+      transition: opacity 0.4s ease;
+    }
+    .facility-card:hover .facility-img { transform: scale(1.06); }
+    .facility-card:hover { border-color: rgba(201,168,76,0.25); }
+    .facility-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .facility-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      z-index: 2; padding: 24px;
+    }
+
+    /* ─── Stats counter ─────────────────────────────── */
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid rgba(201,168,76,0.15);
+    }
+    .stat-item:last-child { border-right: none; }
+
+    /* ─── Form ──────────────────────────────────────── */
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.2);
+      color: #e8e8e0;
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      outline: none;
+    }
+    .form-input::placeholder { color: #585848; }
+    .form-input:focus {
+      border-color: rgba(201,168,76,0.6);
+      background: rgba(201,168,76,0.03);
+    }
+    .form-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #a0a090;
+      margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ─── Benefit item ──────────────────────────────── */
+    .benefit-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px 24px;
+      background: linear-gradient(145deg, #181810, #111108);
+      border: 1px solid rgba(201,168,76,0.1);
+      transition: all 0.3s ease;
+    }
+    .benefit-item:hover {
+      border-color: rgba(201,168,76,0.25);
+      transform: translateX(4px);
+    }
+
+    /* ─── Map placeholder ───────────────────────────── */
+    .map-placeholder {
+      width: 100%; height: 300px;
+      background: linear-gradient(145deg, #181810, #111108);
+      border: 1px solid rgba(201,168,76,0.15);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+    }
+
+    /* ─── Facility image placeholders ──────────────── */
+    .img-placeholder {
+      background: linear-gradient(145deg, #1e1e14, #141410);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      color: rgba(201,168,76,0.25);
+    }
+
+    /* ─── Mobile nav ────────────────────────────────── */
+    #mobile-menu {
+      display: none;
+      background: rgba(13,13,8,0.98);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    #mobile-menu.open { display: block; }
+
+    /* ─── Scroll reveal ─────────────────────────────── */
+    [data-aos] { will-change: opacity, transform; }
+
+    /* ─── Custom scrollbar ──────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0d0d08; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #b8860b, #deb640);
+      border-radius: 3px;
+    }
+
+    /* ─── Section BG alternates ─────────────────────── */
+    .bg-alt { background: #111108; }
+    .bg-main { background: #0d0d08; }
+
+    /* ─── Hover icon glow ───────────────────────────── */
+    .icon-glow {
+      transition: filter 0.3s ease;
+    }
+    .icon-glow:hover {
+      filter: drop-shadow(0 0 8px rgba(201,168,76,0.6));
+    }
+
+    /* ─── Logo SVG styling ──────────────────────────── */
+    .logo-svg {
+      display: inline-block;
+      filter: drop-shadow(0 2px 12px rgba(201,168,76,0.25));
+    }
+  </style>
+</head>
+
+<body class="bg-main">
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-20">
+
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-3 group">
+      <div class="logo-svg">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="44" height="44" fill="url(#logo-bg)"/>
+          <!-- Architectural R -->
+          <path d="M10 8H26C30.4 8 34 11.6 34 16C34 18.8 32.5 21.2 30.2 22.6L35 36H28.8L24.5 24H16.5V36H10V8Z" fill="url(#logo-gold)"/>
+          <path d="M16.5 14V19H25C26.7 19 28 17.7 28 16C28 14.3 26.7 13 25 13H16.5V14Z" fill="#0d0d08"/>
+          <!-- Bottom accent line -->
+          <rect x="10" y="38" width="24" height="1.5" fill="url(#logo-accent)"/>
+          <defs>
+            <linearGradient id="logo-bg" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#181810"/>
+              <stop offset="100%" stop-color="#0d0d08"/>
+            </linearGradient>
+            <linearGradient id="logo-gold" x1="10" y1="8" x2="35" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#f2e09e"/>
+              <stop offset="40%" stop-color="#deb640"/>
+              <stop offset="100%" stop-color="#b8860b"/>
+            </linearGradient>
+            <linearGradient id="logo-accent" x1="10" y1="38" x2="34" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="transparent"/>
+              <stop offset="50%" stop-color="#deb640"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div>
+        <div class="font-display text-sm font-600 tracking-widest text-white group-hover:text-gold-400 transition-colors leading-none">RESIDENCE</div>
+        <div class="font-sans text-xs font-300 tracking-[0.25em] text-gold-500 leading-none mt-0.5">FITNESS CLUB</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#about"     class="nav-link">About</a>
+      <a href="#services"  class="nav-link">Services</a>
+      <a href="#pricing"   class="nav-link">Memberships</a>
+      <a href="#coaches"   class="nav-link">Coaches</a>
+      <a href="#facilities" class="nav-link">Facilities</a>
+      <a href="#contact"   class="nav-link">Contact</a>
+    </div>
+
+    <!-- CTA + burger -->
+    <div class="flex items-center gap-4">
+      <a href="#inquiry" class="hidden lg:block btn-gold text-xs px-6 py-3">Book a Tour</a>
+      <button id="burger" class="lg:hidden text-gold-500 p-2" aria-label="Open menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+          <rect width="22" height="1.5" rx="1" fill="#C9A84C"/>
+          <rect y="7" width="16" height="1.5" rx="1" fill="#C9A84C"/>
+          <rect y="14" width="22" height="1.5" rx="1" fill="#C9A84C"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden">
+    <div class="flex flex-col py-4 px-6 gap-1">
+      <a href="#about"     class="nav-link py-3 border-b border-dark-800">About</a>
+      <a href="#services"  class="nav-link py-3 border-b border-dark-800">Services</a>
+      <a href="#pricing"   class="nav-link py-3 border-b border-dark-800">Memberships</a>
+      <a href="#coaches"   class="nav-link py-3 border-b border-dark-800">Coaches</a>
+      <a href="#facilities" class="nav-link py-3 border-b border-dark-800">Facilities</a>
+      <a href="#contact"   class="nav-link py-3 border-b border-dark-800">Contact</a>
+      <a href="#inquiry"   class="btn-gold mt-4 text-xs px-6 py-3 text-center">Book a Tour</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+
+  <!-- Grid overlay -->
+  <div class="hero-grid absolute inset-0 opacity-60"></div>
+
+  <!-- Orbs -->
+  <div class="hero-orb w-96 h-96 bg-gold-600 opacity-[0.07] top-1/4 right-1/4"></div>
+  <div class="hero-orb w-64 h-64 bg-gold-500 opacity-[0.04] bottom-1/3 left-1/3"></div>
+
+  <!-- Top accent line -->
+  <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-20 relative z-10 w-full">
+    <div class="max-w-3xl">
+
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 mb-8" data-aos="fade-up" data-aos-duration="600">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">Premium Fitness Destination</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-700 leading-[1.05] mb-6"
+          data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+        Elevate Your<br />
+        <span class="gold-text">Training.</span><br />
+        <span class="italic font-400 text-dark-100">Redefine</span> Your Limits.
+      </h1>
+
+      <!-- Sub -->
+      <p class="font-sans text-base md:text-lg text-dark-300 max-w-xl leading-relaxed mb-10"
+         data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
+        A private sanctuary for those who pursue excellence — premium equipment, expert coaching, an Olympic-grade pool, and group classes designed for real results.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 mb-16" data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
+        <a href="#inquiry" class="btn-gold">Send Inquiry</a>
+        <a href="#pricing" class="btn-outline">View Memberships</a>
+      </div>
+
+      <!-- Value props -->
+      <div class="flex flex-wrap gap-x-8 gap-y-3" data-aos="fade-up" data-aos-duration="700" data-aos-delay="400">
+        <div class="flex items-center gap-2 text-dark-300 text-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+          Group Classes
+        </div>
+        <div class="flex items-center gap-2 text-dark-300 text-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+          Personal Training
+        </div>
+        <div class="flex items-center gap-2 text-dark-300 text-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+          Swimming Pool
+        </div>
+        <div class="flex items-center gap-2 text-dark-300 text-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+          Expert Coaches
+        </div>
+        <div class="flex items-center gap-2 text-dark-300 text-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+          Premium Equipment
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 right-12 hidden lg:flex flex-col items-center gap-3"
+         data-aos="fade-in" data-aos-delay="800">
+      <span class="section-label text-xs" style="writing-mode: vertical-rl;">Scroll to explore</span>
+      <div class="w-px h-16 bg-gradient-to-b from-gold-500 to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="bg-alt border-y border-gold-600 border-opacity-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gold-700 divide-opacity-20">
+      <div class="text-center px-6 py-2" data-aos="fade-up" data-aos-delay="0">
+        <div class="font-display text-3xl gold-text font-700">500+</div>
+        <div class="text-dark-400 text-xs tracking-widest uppercase mt-1">Active Members</div>
+      </div>
+      <div class="text-center px-6 py-2" data-aos="fade-up" data-aos-delay="100">
+        <div class="font-display text-3xl gold-text font-700">20+</div>
+        <div class="text-dark-400 text-xs tracking-widest uppercase mt-1">Weekly Classes</div>
+      </div>
+      <div class="text-center px-6 py-2" data-aos="fade-up" data-aos-delay="200">
+        <div class="font-display text-3xl gold-text font-700">12</div>
+        <div class="text-dark-400 text-xs tracking-widest uppercase mt-1">Expert Coaches</div>
+      </div>
+      <div class="text-center px-6 py-2" data-aos="fade-up" data-aos-delay="300">
+        <div class="font-display text-3xl gold-text font-700">2500㎡</div>
+        <div class="text-dark-400 text-xs tracking-widest uppercase mt-1">Premium Space</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section id="about" class="bg-main py-28 px-6 lg:px-12 relative overflow-hidden">
+  <!-- Decorative -->
+  <div class="hero-orb w-80 h-80 bg-gold-600 opacity-[0.04] -top-20 -right-20 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Image placeholder -->
+      <div class="relative" data-aos="fade-right" data-aos-duration="800">
+        <div class="img-placeholder aspect-[4/5] rounded-sm">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect width="64" height="64" fill="none"/>
+            <path d="M8 56V8h48v48H8z" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
+            <circle cx="32" cy="26" r="8" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
+            <path d="M14 56c0-9.9 8.1-18 18-18s18 8.1 18 18" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
+          </svg>
+          <span class="text-gold-700 text-xs tracking-widest uppercase">Club Interior Photo</span>
+        </div>
+        <!-- Gold frame accent -->
+        <div class="absolute -bottom-4 -right-4 w-2/3 h-2/3 border border-gold-600 border-opacity-20 rounded-sm pointer-events-none"></div>
+        <div class="absolute -top-4 -left-4 w-16 h-16 border-t-2 border-l-2 border-gold-500 border-opacity-40 pointer-events-none"></div>
+      </div>
+
+      <!-- Right: Copy -->
+      <div data-aos="fade-left" data-aos-duration="800">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-px bg-gold-500"></div>
+          <span class="section-label">About Us</span>
+        </div>
+
+        <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-6">
+          Where Ambition<br />
+          Meets <span class="gold-text italic">Excellence</span>
+        </h2>
+
+        <div class="gold-divider-sm mb-8" style="margin-left: 0; width: 60px;"></div>
+
+        <p class="text-dark-300 leading-relaxed mb-5 text-base">
+          Residence Fitness Club was built for a singular purpose: to provide a training environment worthy of your ambitions. We didn't compromise on space, equipment, instruction, or atmosphere — because you shouldn't have to.
+        </p>
+        <p class="text-dark-300 leading-relaxed mb-8 text-base">
+          From our Olympic-grade swimming pool to our state-of-the-art strength and conditioning floor, every detail is curated to support serious results. Whether you're beginning your fitness journey or pushing the boundaries of performance, our expert coaching team is here to guide you every step of the way.
+        </p>
+
+        <!-- Checklist -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-2 text-sm text-dark-200">
+            <span class="text-gold-500">✦</span> Group & Specialty Classes
+          </div>
+          <div class="flex items-center gap-2 text-sm text-dark-200">
+            <span class="text-gold-500">✦</span> Individual Training Programs
+          </div>
+          <div class="flex items-center gap-2 text-sm text-dark-200">
+            <span class="text-gold-500">✦</span> Modern Cardio & Strength
+          </div>
+          <div class="flex items-center gap-2 text-sm text-dark-200">
+            <span class="text-gold-500">✦</span> Olympic Swimming Pool
+          </div>
+          <div class="flex items-center gap-2 text-sm text-dark-200">
+            <span class="text-gold-500">✦</span> Certified Expert Coaches
+          </div>
+          <div class="flex items-center gap-2 text-sm text-dark-200">
+            <span class="text-gold-500">✦</span> Premium Private Locker Rooms
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════ -->
+<section id="services" class="bg-alt py-28 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">What We Offer</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-4">
+        Training for <span class="gold-text">Every Goal</span>
+      </h2>
+      <p class="text-dark-400 max-w-xl mx-auto text-base leading-relaxed">
+        A complete ecosystem of fitness services — crafted for beginners, professionals, and elite athletes alike.
+      </p>
+    </div>
+
+    <!-- Service grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Group Classes -->
+      <div class="service-card p-8 rounded-sm" data-aos="fade-up" data-aos-delay="0">
+        <div class="mb-6">
+          <svg class="icon-glow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="13" cy="12" r="5" stroke="#C9A84C" stroke-width="1.5"/>
+            <circle cx="27" cy="12" r="5" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M4 34c0-8 4-12 9-12M22 34c0-8 4-12 9-12" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M14 36c0-6 2.7-9 6-9s6 3 6 9" stroke="#deb640" stroke-width="1.5"/>
+            <circle cx="20" cy="20" r="4.5" stroke="#deb640" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl font-600 text-white mb-3">Group Classes</h3>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6">
+          High-energy sessions led by expert instructors — from HIIT and yoga to boxing and functional training. A new class every day, a new challenge every session.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">HIIT</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Yoga</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Boxing</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Pilates</span>
+        </div>
+      </div>
+
+      <!-- Personal Training -->
+      <div class="service-card p-8 rounded-sm" data-aos="fade-up" data-aos-delay="100">
+        <div class="mb-6">
+          <svg class="icon-glow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M20 6v28M6 14h28M6 26h28" stroke="none"/>
+            <circle cx="20" cy="11" r="5" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M11 34c0-5.5 4-9 9-9s9 3.5 9 9" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M6 19h4l2-4 4 10 3-6 2 3 3 0" stroke="#deb640" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl font-600 text-white mb-3">Personal Training</h3>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6">
+          One-on-one sessions built around your specific goals. Your coach tracks your progress, adjusts your programme, and ensures every session counts toward your target.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Custom Plans</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">1-on-1</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Nutrition</span>
+        </div>
+      </div>
+
+      <!-- Swimming Pool -->
+      <div class="service-card p-8 rounded-sm" data-aos="fade-up" data-aos-delay="200">
+        <div class="mb-6">
+          <svg class="icon-glow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M6 28c2-3 4-3 6 0s4 3 6 0 4-3 6 0 4 3 6 0" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 33c2-3 4-3 6 0s4 3 6 0 4-3 6 0 4 3 6 0" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.5"/>
+            <path d="M14 22a5 5 0 100-10 5 5 0 000 10z" stroke="#deb640" stroke-width="1.5"/>
+            <path d="M19 19l8-7" stroke="#deb640" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M24 10l3-2 2 3" stroke="#deb640" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl font-600 text-white mb-3">Swimming Pool</h3>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6">
+          An Olympic-grade pool available for lap swimming, aqua aerobics, and recovery sessions. Clean, temperature-controlled, and meticulously maintained.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Olympic Grade</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Aqua Classes</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Recovery</span>
+        </div>
+      </div>
+
+      <!-- Equipment -->
+      <div class="service-card p-8 rounded-sm" data-aos="fade-up" data-aos-delay="300">
+        <div class="mb-6">
+          <svg class="icon-glow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="6" y="18" width="6" height="4" rx="1" stroke="#C9A84C" stroke-width="1.5"/>
+            <rect x="28" y="18" width="6" height="4" rx="1" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="12" y1="20" x2="28" y2="20" stroke="#C9A84C" stroke-width="1.5"/>
+            <rect x="15" y="14" width="10" height="12" rx="1" stroke="#deb640" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl font-600 text-white mb-3">Modern Equipment</h3>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6">
+          Industry-leading machines for strength, cardio, and functional training. From cable stations and free weights to smart cardio machines — all premium, all maintained.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Strength</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Cardio</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Functional</span>
+        </div>
+      </div>
+
+      <!-- Coaching Support -->
+      <div class="service-card p-8 rounded-sm" data-aos="fade-up" data-aos-delay="400">
+        <div class="mb-6">
+          <svg class="icon-glow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <path d="M20 6C12.3 6 6 12.3 6 20s6.3 14 14 14 14-6.3 14-14S27.7 6 20 6z" stroke="#C9A84C" stroke-width="1.5"/>
+            <path d="M14 22l4 4 8-9" stroke="#deb640" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl font-600 text-white mb-3">Coaching & Support</h3>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6">
+          Our team of certified coaches is available every day to guide your training, answer questions, and help you progress. No guesswork — just structured, expert-led results.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Daily Support</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Progress Tracking</span>
+        </div>
+      </div>
+
+      <!-- Personalized Plans -->
+      <div class="service-card p-8 rounded-sm" data-aos="fade-up" data-aos-delay="500">
+        <div class="mb-6">
+          <svg class="icon-glow" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect x="8" y="6" width="24" height="30" rx="2" stroke="#C9A84C" stroke-width="1.5"/>
+            <line x1="14" y1="15" x2="26" y2="15" stroke="#deb640" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="14" y1="20" x2="26" y2="20" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6"/>
+            <line x1="14" y1="25" x2="20" y2="25" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" stroke-opacity="0.6"/>
+            <circle cx="29" cy="29" r="6" fill="#181810" stroke="#deb640" stroke-width="1.5"/>
+            <path d="M27 29l1.5 1.5 2.5-2.5" stroke="#deb640" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl font-600 text-white mb-3">Personalised Plans</h3>
+        <p class="text-dark-400 text-sm leading-relaxed mb-6">
+          Every member receives a customised training and wellness roadmap — tailored to your body, goals, schedule, and experience level. Sustainable, structured, and built around you.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Personalised</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">Goal-Based</span>
+          <span class="px-3 py-1 bg-dark-800 border border-gold-700 border-opacity-30 text-gold-600 text-xs tracking-wider rounded-sm">All Levels</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PRICING
+══════════════════════════════════════════ -->
+<section id="pricing" class="bg-main py-28 px-6 lg:px-12 relative overflow-hidden">
+  <div class="hero-orb w-96 h-96 bg-gold-500 opacity-[0.03] top-0 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-4" data-aos="fade-up">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">Memberships</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-4">
+        Invest in <span class="gold-text">Your Best Self</span>
+      </h2>
+      <p class="text-dark-400 max-w-lg mx-auto text-base leading-relaxed">
+        Transparent, flexible membership plans designed to match your lifestyle and commitment level.
+      </p>
+    </div>
+
+    <!-- Demo notice -->
+    <div class="flex items-center justify-center gap-2 mb-14" data-aos="fade-up" data-aos-delay="100">
+      <span class="text-gold-600 text-xs">⚠</span>
+      <span class="text-dark-500 text-xs tracking-wider">DEMO PRICING — Final rates to be confirmed by client</span>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+      <!-- Basic -->
+      <div class="pricing-card rounded-sm p-8 flex flex-col" data-aos="fade-up" data-aos-delay="0">
+        <div class="mb-6">
+          <span class="section-label text-xs">Essential</span>
+          <div class="font-display text-4xl font-700 text-white mt-3">$XX
+            <span class="text-dark-400 text-base font-sans font-400">/mo</span>
+          </div>
+          <div class="text-dark-500 text-xs mt-1">Billed monthly</div>
+        </div>
+        <div class="gold-divider mb-6"></div>
+        <ul class="flex flex-col gap-3 flex-grow mb-8">
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Gym floor access (6:00–22:00)
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Locker room & changing facilities
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            4 group classes per month
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-400">
+            <span class="text-dark-600 mt-0.5 flex-shrink-0">—</span>
+            Pool access
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-400">
+            <span class="text-dark-600 mt-0.5 flex-shrink-0">—</span>
+            Personal training sessions
+          </li>
+        </ul>
+        <a href="#inquiry" class="btn-outline w-full text-xs py-3">Get Started</a>
+      </div>
+
+      <!-- Premium (featured) -->
+      <div class="pricing-card featured rounded-sm p-8 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="mb-6">
+          <span class="section-label text-xs">Premium</span>
+          <div class="font-display text-4xl font-700 mt-3 gold-text">$XX
+            <span class="text-dark-400 text-base font-sans font-400">/mo</span>
+          </div>
+          <div class="text-dark-500 text-xs mt-1">Billed monthly</div>
+        </div>
+        <div class="gold-divider mb-6"></div>
+        <ul class="flex flex-col gap-3 flex-grow mb-8">
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Unlimited gym floor access
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Full pool access
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Unlimited group classes
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            2 personal training sessions/mo
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Personalised training plan
+          </li>
+        </ul>
+        <a href="#inquiry" class="btn-gold w-full text-xs py-3">Get Started</a>
+      </div>
+
+      <!-- Elite -->
+      <div class="pricing-card rounded-sm p-8 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="mb-6">
+          <span class="section-label text-xs">Elite</span>
+          <div class="font-display text-4xl font-700 text-white mt-3">$XX
+            <span class="text-dark-400 text-base font-sans font-400">/mo</span>
+          </div>
+          <div class="text-dark-500 text-xs mt-1">Billed monthly</div>
+        </div>
+        <div class="gold-divider mb-6"></div>
+        <ul class="flex flex-col gap-3 flex-grow mb-8">
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Everything in Premium
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Unlimited personal training
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Nutrition consultation
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            Priority booking
+          </li>
+          <li class="flex items-start gap-3 text-sm text-dark-300">
+            <span class="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+            VIP locker assignment
+          </li>
+        </ul>
+        <a href="#inquiry" class="btn-outline w-full text-xs py-3">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Add-on row -->
+    <div class="bg-alt border border-gold-700 border-opacity-15 rounded-sm p-6" data-aos="fade-up" data-aos-delay="300">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <p class="text-dark-200 text-sm font-500">Looking for a single session or family plan?</p>
+          <p class="text-dark-500 text-xs mt-1">Day passes, student rates, family memberships, and corporate packages available.</p>
+        </div>
+        <a href="#inquiry" class="btn-outline text-xs py-2.5 px-6">Enquire About Special Plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     COACHES
+══════════════════════════════════════════ -->
+<section id="coaches" class="bg-alt py-28 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">Our Team</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-4">
+        Meet Your <span class="gold-text">Coaches</span>
+      </h2>
+      <p class="text-dark-400 max-w-lg mx-auto text-base leading-relaxed">
+        Certified professionals dedicated to your progress. Each coach brings deep expertise and a genuine commitment to your growth.
+      </p>
+    </div>
+
+    <!-- Coach cards -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Coach 1 -->
+      <div class="coach-card rounded-sm" data-aos="fade-up" data-aos-delay="0">
+        <div class="coach-img-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="22" r="12" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+            <path d="M8 58c0-12.2 9.9-22 22-22s22 9.8 22 22" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="absolute bottom-12 text-gold-700 text-xs tracking-widest z-10">Coach Photo</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Alex Mercer</h3>
+          <p class="section-label text-xs mb-3">Strength & Conditioning</p>
+          <p class="text-dark-400 text-xs leading-relaxed">
+            10+ years coaching athletes. NSCA Certified. Specialises in powerlifting foundations and functional movement.
+          </p>
+        </div>
+      </div>
+
+      <!-- Coach 2 -->
+      <div class="coach-card rounded-sm" data-aos="fade-up" data-aos-delay="100">
+        <div class="coach-img-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="22" r="12" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+            <path d="M8 58c0-12.2 9.9-22 22-22s22 9.8 22 22" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="absolute bottom-12 text-gold-700 text-xs tracking-widest z-10">Coach Photo</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Sofia Reyes</h3>
+          <p class="section-label text-xs mb-3">Yoga & Wellness</p>
+          <p class="text-dark-400 text-xs leading-relaxed">
+            Registered yoga teacher (RYT-500). Integrates breathwork, mobility, and mindfulness for total-body transformation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Coach 3 -->
+      <div class="coach-card rounded-sm" data-aos="fade-up" data-aos-delay="200">
+        <div class="coach-img-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="22" r="12" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+            <path d="M8 58c0-12.2 9.9-22 22-22s22 9.8 22 22" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="absolute bottom-12 text-gold-700 text-xs tracking-widest z-10">Coach Photo</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Dmitri Volkov</h3>
+          <p class="section-label text-xs mb-3">Aquatics & Swimming</p>
+          <p class="text-dark-400 text-xs leading-relaxed">
+            Former national swimmer. Coaches competitive and recreational swimmers of all levels with structured technique programmes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Coach 4 -->
+      <div class="coach-card rounded-sm" data-aos="fade-up" data-aos-delay="300">
+        <div class="coach-img-placeholder">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="22" r="12" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+            <path d="M8 58c0-12.2 9.9-22 22-22s22 9.8 22 22" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
+          </svg>
+          <span class="absolute bottom-12 text-gold-700 text-xs tracking-widest z-10">Coach Photo</span>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Leila Nasser</h3>
+          <p class="section-label text-xs mb-3">HIIT & Cardio</p>
+          <p class="text-dark-400 text-xs leading-relaxed">
+            ACE-certified personal trainer. Passionate about high-intensity functional training, fat loss, and building lasting healthy habits.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Placeholder note -->
+    <p class="text-center text-dark-600 text-xs mt-8 tracking-wider" data-aos="fade-up" data-aos-delay="400">
+      ⟨ Coach names, photos & bios to be updated with actual team details ⟩
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FACILITIES
+══════════════════════════════════════════ -->
+<section id="facilities" class="bg-main py-28 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">Our Space</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-4">
+        World-Class <span class="gold-text">Facilities</span>
+      </h2>
+      <p class="text-dark-400 max-w-lg mx-auto text-base leading-relaxed">
+        Every space is designed with precision — from the flooring to the lighting. Come for the results, stay for the environment.
+      </p>
+    </div>
+
+    <!-- Facility grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- Large feature card -->
+      <div class="facility-card col-span-2 lg:col-span-2 rounded-sm" style="height: 360px;" data-aos="fade-up" data-aos-delay="0">
+        <div class="img-placeholder w-full h-full">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <rect x="8" y="8" width="48" height="48" stroke="rgba(201,168,76,0.25)" stroke-width="1" fill="none"/>
+            <path d="M16 48V24M20 48V28M24 48V20M28 48V32" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+            <rect x="30" y="18" width="18" height="10" rx="1" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
+          </svg>
+          <span class="text-gold-700 text-xs tracking-widest uppercase">Main Training Floor</span>
+        </div>
+        <div class="facility-content">
+          <h3 class="font-display text-xl font-600 text-white mb-1">Main Training Floor</h3>
+          <p class="text-dark-400 text-xs">2,500 sqm of premium strength & cardio equipment</p>
+        </div>
+      </div>
+
+      <!-- Small card 1 -->
+      <div class="facility-card rounded-sm" style="height: 360px;" data-aos="fade-up" data-aos-delay="100">
+        <div class="img-placeholder w-full h-full">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <path d="M8 34c2-4 4-4 6 0s4 4 6 0 4-4 6 0 4 4 6 0" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+            <path d="M8 40c2-4 4-4 6 0s4 4 6 0 4-4 6 0 4 4 6 0" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <rect x="14" y="8" width="20" height="18" rx="1" stroke="rgba(201,168,76,0.25)" stroke-width="1" fill="none"/>
+          </svg>
+          <span class="text-gold-700 text-xs tracking-widest uppercase text-center px-4">Swimming Pool</span>
+        </div>
+        <div class="facility-content">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Olympic Pool</h3>
+          <p class="text-dark-400 text-xs">25m heated lanes</p>
+        </div>
+      </div>
+
+      <!-- Small card 2 -->
+      <div class="facility-card rounded-sm" style="height: 240px;" data-aos="fade-up" data-aos-delay="200">
+        <div class="img-placeholder w-full h-full">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="18" r="8" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+            <path d="M10 44c0-8 6.3-14 14-14s14 6 14 14" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+          </svg>
+          <span class="text-gold-700 text-xs tracking-widest uppercase">Group Studio</span>
+        </div>
+        <div class="facility-content">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Group Studio</h3>
+          <p class="text-dark-400 text-xs">Sprung floor, mirrored walls</p>
+        </div>
+      </div>
+
+      <!-- Small card 3 -->
+      <div class="facility-card rounded-sm" style="height: 240px;" data-aos="fade-up" data-aos-delay="300">
+        <div class="img-placeholder w-full h-full">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="20" width="8" height="6" rx="1" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+            <rect x="34" y="20" width="8" height="6" rx="1" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+            <line x1="14" y1="23" x2="34" y2="23" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+            <rect x="19" y="16" width="10" height="14" rx="1" stroke="rgba(201,168,76,0.25)" stroke-width="1"/>
+          </svg>
+          <span class="text-gold-700 text-xs tracking-widest uppercase">Free Weights</span>
+        </div>
+        <div class="facility-content">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Free Weights Zone</h3>
+          <p class="text-dark-400 text-xs">Full Olympic & powerlifting setup</p>
+        </div>
+      </div>
+
+      <!-- Small card 4 -->
+      <div class="facility-card rounded-sm" style="height: 240px;" data-aos="fade-up" data-aos-delay="400">
+        <div class="img-placeholder w-full h-full">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <rect x="6" y="10" width="36" height="28" rx="2" stroke="rgba(201,168,76,0.25)" stroke-width="1.5"/>
+            <path d="M14 30V20M18 30V22M22 30V18M26 30V24" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+          </svg>
+          <span class="text-gold-700 text-xs tracking-widest uppercase">Cardio Deck</span>
+        </div>
+        <div class="facility-content">
+          <h3 class="font-display text-lg font-600 text-white mb-1">Cardio Deck</h3>
+          <p class="text-dark-400 text-xs">Treadmills, bikes, rowers & more</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center text-dark-600 text-xs mt-8 tracking-wider" data-aos="fade-up">
+      ⟨ Replace placeholder boxes with actual facility photos ⟩
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     WHY CHOOSE US
+══════════════════════════════════════════ -->
+<section id="why" class="bg-alt py-28 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: Title -->
+      <div data-aos="fade-right">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-px bg-gold-500"></div>
+          <span class="section-label">Why Residence</span>
+        </div>
+        <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-6">
+          The Standard<br />
+          You <span class="gold-text">Deserve</span>
+        </h2>
+        <p class="text-dark-300 leading-relaxed text-base mb-8">
+          There are many gyms. There is only one Residence. We built this club for members who hold themselves to a higher standard — and expect their environment to match.
+        </p>
+        <a href="#inquiry" class="btn-gold">Start Your Journey</a>
+      </div>
+
+      <!-- Right: Benefits list -->
+      <div class="flex flex-col gap-3" data-aos="fade-left" data-aos-delay="100">
+
+        <div class="benefit-item rounded-sm">
+          <div class="text-gold-500 text-xl flex-shrink-0 mt-0.5">⬡</div>
+          <div>
+            <h4 class="font-sans font-600 text-white text-sm mb-1">Premium Atmosphere & Environment</h4>
+            <p class="text-dark-400 text-xs leading-relaxed">A refined, clean, and motivating space that reflects the level of your ambitions.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item rounded-sm" data-aos-delay="50">
+          <div class="text-gold-500 text-xl flex-shrink-0 mt-0.5">⬡</div>
+          <div>
+            <h4 class="font-sans font-600 text-white text-sm mb-1">Expert Certified Coaching Staff</h4>
+            <p class="text-dark-400 text-xs leading-relaxed">Every coach is credentialed, experienced, and deeply invested in your results.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item rounded-sm">
+          <div class="text-gold-500 text-xl flex-shrink-0 mt-0.5">⬡</div>
+          <div>
+            <h4 class="font-sans font-600 text-white text-sm mb-1">Diverse Training Options</h4>
+            <p class="text-dark-400 text-xs leading-relaxed">Group classes, individual training, swimming, strength, cardio — all under one roof.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item rounded-sm">
+          <div class="text-gold-500 text-xl flex-shrink-0 mt-0.5">⬡</div>
+          <div>
+            <h4 class="font-sans font-600 text-white text-sm mb-1">Suitable for All Levels</h4>
+            <p class="text-dark-400 text-xs leading-relaxed">Whether you're a first-timer or a seasoned athlete, our programmes adapt to you.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item rounded-sm">
+          <div class="text-gold-500 text-xl flex-shrink-0 mt-0.5">⬡</div>
+          <div>
+            <h4 class="font-sans font-600 text-white text-sm mb-1">Convenient & Direct Communication</h4>
+            <p class="text-dark-400 text-xs leading-relaxed">Reach our team via WhatsApp, Telegram, or phone. Fast, friendly, professional support.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item rounded-sm">
+          <div class="text-gold-500 text-xl flex-shrink-0 mt-0.5">⬡</div>
+          <div>
+            <h4 class="font-sans font-600 text-white text-sm mb-1">Results-Driven Culture</h4>
+            <p class="text-dark-400 text-xs leading-relaxed">We measure success by your progress — not by membership numbers.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     INQUIRY FORM
+══════════════════════════════════════════ -->
+<section id="inquiry" class="bg-main py-28 px-6 lg:px-12 relative overflow-hidden">
+  <div class="hero-orb w-96 h-96 bg-gold-500 opacity-[0.03] bottom-0 right-0 pointer-events-none"></div>
+
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-14" data-aos="fade-up">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">Get In Touch</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight mb-4">
+        Ready to Begin?<br />
+        <span class="gold-text">Send an Inquiry.</span>
+      </h2>
+      <p class="text-dark-400 max-w-md mx-auto text-base leading-relaxed">
+        Fill in the form below and one of our team will respond within 24 hours to answer any questions and arrange a club tour.
+      </p>
+    </div>
+
+    <!-- Form -->
+    <div class="bg-alt border border-gold-700 border-opacity-15 rounded-sm p-8 lg:p-12" data-aos="fade-up" data-aos-delay="100">
+      <form id="inquiry-form" onsubmit="handleFormSubmit(event)">
+
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <!-- Full name -->
+          <div>
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-input rounded-sm" placeholder="Your full name" required />
+          </div>
+          <!-- Phone -->
+          <div>
+            <label class="form-label">Phone Number *</label>
+            <input type="tel" class="form-input rounded-sm" placeholder="+1 (000) 000-0000" required />
+          </div>
+          <!-- Email -->
+          <div>
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input rounded-sm" placeholder="your@email.com" required />
+          </div>
+          <!-- Service -->
+          <div>
+            <label class="form-label">Preferred Service</label>
+            <select class="form-input rounded-sm" style="appearance: none; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%23C9A84C%22 stroke-width=%221.5%22 fill=%22none%22/></svg>'); background-repeat: no-repeat; background-position: right 14px center;">
+              <option value="" style="background: #181810;">Select a service</option>
+              <option value="membership" style="background: #181810;">General Membership</option>
+              <option value="personal" style="background: #181810;">Personal Training</option>
+              <option value="group" style="background: #181810;">Group Classes</option>
+              <option value="pool" style="background: #181810;">Swimming Pool</option>
+              <option value="tour" style="background: #181810;">Club Tour</option>
+              <option value="other" style="background: #181810;">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="mb-8">
+          <label class="form-label">Message</label>
+          <textarea class="form-input rounded-sm resize-none" rows="4" placeholder="Tell us about your goals, any questions you have, or when you'd like to visit..."></textarea>
+        </div>
+
+        <!-- Submit -->
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <button type="submit" class="btn-gold w-full sm:w-auto px-10">
+            Send Inquiry
+          </button>
+          <p class="text-dark-500 text-xs">We respond within 24 hours. No spam, no sales pressure.</p>
+        </div>
+
+      </form>
+
+      <!-- Success message (hidden) -->
+      <div id="form-success" class="hidden text-center py-8">
+        <div class="text-gold-500 text-4xl mb-4">✓</div>
+        <h3 class="font-display text-2xl text-white mb-2">Inquiry Received</h3>
+        <p class="text-dark-400 text-sm">Thank you. We'll be in touch within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact" class="bg-alt py-28 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Heading -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <div class="w-8 h-px bg-gold-500"></div>
+        <span class="section-label">Find Us</span>
+        <div class="w-8 h-px bg-gold-500"></div>
+      </div>
+      <h2 class="font-display text-4xl lg:text-5xl font-600 leading-tight">
+        Visit <span class="gold-text">Residence</span>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Left: Contact info -->
+      <div data-aos="fade-right">
+        <div class="flex flex-col gap-6 mb-10">
+
+          <!-- Address -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 border border-gold-600 border-opacity-30 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 1C6.2 1 4 3.2 4 6c0 4 5 11 5 11s5-7 5-11c0-2.8-2.2-5-5-5z" stroke="#C9A84C" stroke-width="1.2"/>
+                <circle cx="9" cy="6" r="1.5" stroke="#C9A84C" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-dark-500 text-xs tracking-widest uppercase mb-1">Address</p>
+              <p class="text-dark-200 text-sm">123 Premium Boulevard, City Center<br/>
+              <span class="text-dark-400">City, Country — ZIP CODE</span></p>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 border border-gold-600 border-opacity-30 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 3h3l1.5 3.5-2 1.5a11 11 0 005.5 5.5l1.5-2L16 13v3a1 1 0 01-1 1C7.3 17 1 10.7 1 4a1 1 0 011-1z" stroke="#C9A84C" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-dark-500 text-xs tracking-widest uppercase mb-1">Phone</p>
+              <a href="tel:+10000000000" class="text-dark-200 text-sm hover:text-gold-500 transition-colors">+1 (000) 000-0000</a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 border border-gold-600 border-opacity-30 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="1" y="4" width="16" height="10" rx="1.5" stroke="#C9A84C" stroke-width="1.2"/>
+                <path d="M1 5l8 5 8-5" stroke="#C9A84C" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-dark-500 text-xs tracking-widest uppercase mb-1">Email</p>
+              <a href="mailto:info@residencefitness.com" class="text-dark-200 text-sm hover:text-gold-500 transition-colors">info@residencefitness.com</a>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 border border-gold-600 border-opacity-30 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="7.5" stroke="#C9A84C" stroke-width="1.2"/>
+                <path d="M9 5v4l3 2" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-dark-500 text-xs tracking-widest uppercase mb-1">Opening Hours</p>
+              <p class="text-dark-200 text-sm">Mon – Fri: 06:00 – 22:00</p>
+              <p class="text-dark-400 text-sm">Sat – Sun: 08:00 – 20:00</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Social links -->
+        <div>
+          <p class="text-dark-500 text-xs tracking-widest uppercase mb-4">Follow & Connect</p>
+          <div class="flex items-center gap-3">
+            <!-- Instagram -->
+            <a href="https://instagram.com/residencefitness" target="_blank" class="w-11 h-11 border border-gold-600 border-opacity-30 flex items-center justify-center text-gold-600 hover:border-gold-500 hover:text-gold-400 hover:bg-gold-500 hover:bg-opacity-10 transition-all">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <!-- Telegram -->
+            <a href="https://t.me/residencefitness" target="_blank" class="w-11 h-11 border border-gold-600 border-opacity-30 flex items-center justify-center text-gold-600 hover:border-gold-500 hover:text-gold-400 hover:bg-gold-500 hover:bg-opacity-10 transition-all">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+              </svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/10000000000" target="_blank" class="w-11 h-11 border border-gold-600 border-opacity-30 flex items-center justify-center text-gold-600 hover:border-gold-500 hover:text-gold-400 hover:bg-gold-500 hover:bg-opacity-10 transition-all">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Map placeholder -->
+      <div data-aos="fade-left">
+        <div class="map-placeholder rounded-sm">
+          <!-- Decorative map grid -->
+          <svg width="120" height="80" viewBox="0 0 120 80" fill="none" class="mb-3 opacity-50">
+            <line x1="0" y1="20" x2="120" y2="20" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="0" y1="40" x2="120" y2="40" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="0" y1="60" x2="120" y2="60" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="20" y1="0" x2="20" y2="80" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="40" y1="0" x2="40" y2="80" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="60" y1="0" x2="60" y2="80" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="80" y1="0" x2="80" y2="80" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <line x1="100" y1="0" x2="100" y2="80" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <path d="M35 25h20l5 5v25H30V30z" stroke="rgba(201,168,76,0.2)" stroke-width="1" fill="rgba(201,168,76,0.04)"/>
+            <path d="M60 15h15v20H60z" stroke="rgba(201,168,76,0.15)" stroke-width="1" fill="none"/>
+            <circle cx="60" cy="40" r="6" fill="#C9A84C" fill-opacity="0.6"/>
+            <circle cx="60" cy="40" r="3" fill="#C9A84C"/>
+            <line x1="60" y1="46" x2="60" y2="56" stroke="#C9A84C" stroke-width="1" stroke-dasharray="2,2"/>
+          </svg>
+          <p class="text-dark-400 text-xs tracking-wider uppercase">Map Placeholder</p>
+          <p class="text-dark-600 text-xs mt-1">Replace with Google Maps embed</p>
+          <a href="https://maps.google.com" target="_blank"
+             class="mt-4 text-xs text-gold-600 border border-gold-700 border-opacity-30 px-4 py-2 hover:text-gold-400 hover:border-gold-500 transition-colors">
+            Open in Google Maps ↗
+          </a>
+        </div>
+        <!-- To embed real Google Maps, replace the above div with:
+        <iframe
+          src="https://www.google.com/maps/embed?pb=YOUR_EMBED_URL"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+        -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="bg-dark-950 border-t border-gold-700 border-opacity-20 pt-16 pb-8 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Main footer grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <a href="#hero" class="flex items-center gap-3 mb-4 group">
+          <div class="logo-svg">
+            <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="44" height="44" fill="url(#flogo-bg)"/>
+              <path d="M10 8H26C30.4 8 34 11.6 34 16C34 18.8 32.5 21.2 30.2 22.6L35 36H28.8L24.5 24H16.5V36H10V8Z" fill="url(#flogo-gold)"/>
+              <path d="M16.5 14V19H25C26.7 19 28 17.7 28 16C28 14.3 26.7 13 25 13H16.5V14Z" fill="#0d0d08"/>
+              <rect x="10" y="38" width="24" height="1.5" fill="url(#flogo-accent)"/>
+              <defs>
+                <linearGradient id="flogo-bg" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#181810"/>
+                  <stop offset="100%" stop-color="#0d0d08"/>
+                </linearGradient>
+                <linearGradient id="flogo-gold" x1="10" y1="8" x2="35" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#f2e09e"/>
+                  <stop offset="40%" stop-color="#deb640"/>
+                  <stop offset="100%" stop-color="#b8860b"/>
+                </linearGradient>
+                <linearGradient id="flogo-accent" x1="10" y1="38" x2="34" y2="38" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="50%" stop-color="#deb640"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div>
+            <div class="font-display text-sm font-600 tracking-widest text-white leading-none">RESIDENCE</div>
+            <div class="font-sans text-xs font-300 tracking-[0.25em] text-gold-600 leading-none mt-0.5">FITNESS CLUB</div>
+          </div>
+        </a>
+        <p class="text-dark-400 text-xs leading-relaxed mb-6">
+          A premium fitness destination where ambition meets expert coaching, world-class facilities, and an environment that inspires excellence.
+        </p>
+        <!-- Social row -->
+        <div class="flex gap-2">
+          <a href="#" class="w-8 h-8 border border-dark-700 flex items-center justify-center text-dark-400 hover:text-gold-500 hover:border-gold-600 transition-all text-xs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 border border-dark-700 flex items-center justify-center text-dark-400 hover:text-gold-500 hover:border-gold-600 transition-all">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="#" class="w-8 h-8 border border-dark-700 flex items-center justify-center text-dark-400 hover:text-gold-500 hover:border-gold-600 transition-all">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div>
+        <h4 class="font-sans text-xs tracking-widest uppercase text-dark-400 mb-5">Quick Links</h4>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#about"      class="text-dark-300 text-sm hover:text-gold-500 transition-colors">About Us</a></li>
+          <li><a href="#services"   class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Services</a></li>
+          <li><a href="#pricing"    class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Memberships</a></li>
+          <li><a href="#coaches"    class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Our Coaches</a></li>
+          <li><a href="#facilities" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Facilities</a></li>
+          <li><a href="#inquiry"    class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Book a Tour</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-sans text-xs tracking-widest uppercase text-dark-400 mb-5">Services</h4>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#services" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Group Classes</a></li>
+          <li><a href="#services" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Personal Training</a></li>
+          <li><a href="#services" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Swimming Pool</a></li>
+          <li><a href="#services" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Strength & Cardio</a></li>
+          <li><a href="#services" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Nutrition Coaching</a></li>
+          <li><a href="#services" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">Personalised Plans</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-sans text-xs tracking-widest uppercase text-dark-400 mb-5">Contact</h4>
+        <ul class="flex flex-col gap-3">
+          <li class="text-dark-400 text-sm">📍 123 Premium Blvd, City</li>
+          <li>
+            <a href="tel:+10000000000" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">📞 +1 (000) 000-0000</a>
+          </li>
+          <li>
+            <a href="mailto:info@residencefitness.com" class="text-dark-300 text-sm hover:text-gold-500 transition-colors">✉ info@residencefitness.com</a>
+          </li>
+          <li class="text-dark-400 text-xs mt-2">Mon–Fri: 06:00–22:00</li>
+          <li class="text-dark-400 text-xs">Sat–Sun: 08:00–20:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Gold divider -->
+    <div class="gold-divider mb-6"></div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-dark-600 text-xs">
+        © 2025 Residence Fitness Club. All rights reserved.
+      </p>
+      <div class="flex gap-6">
+        <a href="#" class="text-dark-600 text-xs hover:text-gold-600 transition-colors">Privacy Policy</a>
+        <a href="#" class="text-dark-600 text-xs hover:text-gold-600 transition-colors">Terms of Service</a>
+        <a href="#" class="text-dark-600 text-xs hover:text-gold-600 transition-colors">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // ── AOS init
+  AOS.init({
+    duration: 700,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 60,
+  });
+
+  // ── Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // ── Mobile menu toggle
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  // Close on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // ── Smooth scroll (polyfill for older browsers)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── Form submit handler (demo — swap with real backend)
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('inquiry-form');
+    const success = document.getElementById('form-success');
+    form.style.opacity = '0';
+    form.style.transition = 'opacity 0.4s ease';
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.classList.remove('hidden');
+      success.style.opacity = '0';
+      success.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => { success.style.opacity = '1'; }, 50);
+    }, 400);
+  }
+
+  // ── Animated counter for stats
+  function animateCount(el, target, suffix='', duration=1600) {
+    let start = null;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Trigger counters when in view
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const raw = el.dataset.count;
+        const suffix = el.dataset.suffix || '';
+        if (raw) animateCount(el, parseInt(raw), suffix);
+        statObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  // (If you add data-count to stat elements, they'll animate)
+  document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>
