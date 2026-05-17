@@ -1357,22 +1357,22 @@
           <!-- Full name -->
           <div>
             <label class="form-label">Имя и фамилия *</label>
-            <input type="text" class="form-input rounded-sm" placeholder="Ваше имя и фамилия" required />
+            <input id="f-name" type="text" class="form-input rounded-sm" placeholder="Ваше имя и фамилия" required />
           </div>
           <!-- Phone -->
           <div>
             <label class="form-label">Номер телефона *</label>
-            <input type="tel" class="form-input rounded-sm" placeholder="+998 (00) 000-00-00" required />
+            <input id="f-phone" type="tel" class="form-input rounded-sm" placeholder="+998 (00) 000-00-00" required />
           </div>
           <!-- Email -->
           <div>
             <label class="form-label">Электронная почта *</label>
-            <input type="email" class="form-input rounded-sm" placeholder="ваш@email.com" required />
+            <input id="f-email" type="email" class="form-input rounded-sm" placeholder="ваш@email.com" required />
           </div>
           <!-- Service -->
           <div>
             <label class="form-label">Интересующая услуга</label>
-            <select class="form-input rounded-sm" style="appearance: none; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%23C9A84C%22 stroke-width=%221.5%22 fill=%22none%22/></svg>'); background-repeat: no-repeat; background-position: right 14px center;">
+            <select id="f-service" class="form-input rounded-sm" style="appearance: none; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%23C9A84C%22 stroke-width=%221.5%22 fill=%22none%22/></svg>'); background-repeat: no-repeat; background-position: right 14px center;">
               <option value="" style="background: #181810;">Выберите услугу</option>
               <option value="membership" style="background: #181810;">Общий абонемент</option>
               <option value="personal" style="background: #181810;">Персональные тренировки</option>
@@ -1387,7 +1387,7 @@
         <!-- Message -->
         <div class="mb-8">
           <label class="form-label">Сообщение</label>
-          <textarea class="form-input rounded-sm resize-none" rows="4" placeholder="Расскажите о своих целях, задайте вопросы или укажите удобное время для визита..."></textarea>
+          <textarea id="f-message" class="form-input rounded-sm resize-none" rows="4" placeholder="Расскажите о своих целях, задайте вопросы или укажите удобное время для визита..."></textarea>
         </div>
 
         <!-- Submit -->
@@ -1445,8 +1445,8 @@
             </div>
             <div>
               <p class="text-dark-500 text-xs tracking-widest uppercase mb-1">Адрес</p>
-              <p class="text-dark-200 text-sm">123 Premium Boulevard, City Center<br/>
-              <span class="text-dark-400">City, Country — ZIP CODE</span></p>
+              <a href="https://www.google.com/maps/place/41%C2%B022'10.1%22N+69%C2%B016'23.8%22E/@41.36948,69.2706991,17z" target="_blank" class="text-dark-200 text-sm hover:text-gold-500 transition-colors">Residence Fitness Club<br/>
+              <span class="text-dark-400">Ташкент, Узбекистан</span></a>
             </div>
           </div>
 
@@ -1526,7 +1526,7 @@
       <div data-aos="fade-left" class="w-full min-w-0">
         <div class="relative w-full overflow-hidden rounded-sm border border-gold-700 border-opacity-15" style="padding-top: 56.25%;">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.2103125678395!2d69.26982307647636!3d41.369515197102984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8fd6296bad67%3A0x641ebdb82cc8d6ac!2sSilver%20Rain%20FITNESS!5e0!3m2!1sru!2sus!4v1776636918931!5m2!1sru!2sus"
+            src="https://www.google.com/maps?q=41.36948,69.273274&output=embed&z=17&hl=ru"
             style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block;"
             allowfullscreen=""
             loading="lazy"
@@ -1685,20 +1685,63 @@
     });
   });
 
-  // ── Form submit handler (demo — swap with real backend)
-  function handleFormSubmit(e) {
+  // ── Form submit handler — sends to Telegram bot
+  async function handleFormSubmit(e) {
     e.preventDefault();
-    const form = document.getElementById('inquiry-form');
-    const success = document.getElementById('form-success');
-    form.style.opacity = '0';
-    form.style.transition = 'opacity 0.4s ease';
-    setTimeout(() => {
-      form.style.display = 'none';
-      success.classList.remove('hidden');
-      success.style.opacity = '0';
-      success.style.transition = 'opacity 0.4s ease';
-      setTimeout(() => { success.style.opacity = '1'; }, 50);
-    }, 400);
+
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const service = document.getElementById('f-service');
+    const serviceText = service.options[service.selectedIndex].text;
+    const message = document.getElementById('f-message').value.trim();
+
+    const text =
+      '📋 *Новая заявка — Residence Fitness Club*\n\n' +
+      '👤 *Имя:* ' + name + '\n' +
+      '📞 *Телефон:* ' + phone + '\n' +
+      '📧 *Email:* ' + email + '\n' +
+      '🏋️ *Услуга:* ' + serviceText + '\n' +
+      (message ? '💬 *Сообщение:* ' + message : '');
+
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Отправка...';
+
+    try {
+      const res = await fetch(
+        'https://api.telegram.org/bot8305759591:AAHIk_itWfMED77qoWgehjXjRXaLFAgaXuY/sendMessage',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: '1431921953',
+            text: text,
+            parse_mode: 'Markdown'
+          })
+        }
+      );
+
+      if (!res.ok) throw new Error('Telegram API error');
+
+      // Show success
+      const form = document.getElementById('inquiry-form');
+      const success = document.getElementById('form-success');
+      form.style.opacity = '0';
+      form.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.classList.remove('hidden');
+        success.style.opacity = '0';
+        success.style.transition = 'opacity 0.4s ease';
+        setTimeout(() => { success.style.opacity = '1'; }, 50);
+      }, 400);
+
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Отправить заявку';
+      alert('Ошибка отправки. Пожалуйста, напишите нам напрямую.');
+    }
   }
 
   // ── Animated counter for stats
