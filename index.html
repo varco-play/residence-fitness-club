@@ -667,14 +667,10 @@
 
       <!-- Left: Image placeholder -->
       <div class="relative" data-aos="fade-right" data-aos-duration="800">
-        <div class="img-placeholder aspect-[4/5] rounded-sm">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <rect width="64" height="64" fill="none"/>
-            <path d="M8 56V8h48v48H8z" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
-            <circle cx="32" cy="26" r="8" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
-            <path d="M14 56c0-9.9 8.1-18 18-18s18 8.1 18 18" stroke="rgba(201,168,76,0.3)" stroke-width="1" fill="none"/>
-          </svg>
-          <span class="text-gold-700 text-xs tracking-widest uppercase">Интерьер клуба</span>
+        <div class="aspect-[4/5] rounded-sm overflow-hidden relative">
+          <img src="gym1.png" alt="Интерьер Residence Fitness Club"
+               style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(13,13,8,0.35) 100%);pointer-events:none;"></div>
         </div>
         <!-- Gold frame accent -->
         <div class="absolute -bottom-4 -right-4 w-2/3 h-2/3 border border-gold-600 border-opacity-20 rounded-sm pointer-events-none"></div>
@@ -1554,15 +1550,7 @@
 
       <!-- Large feature card -->
       <div class="facility-card facility-lg col-span-1 sm:col-span-2 rounded-sm" data-aos="fade-up" data-aos-delay="0">
-        <div class="img-placeholder w-full h-full">
-          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 10v36M18 16h-4a2 2 0 00-2 2v12a2 2 0 002 2h4" stroke="rgba(201,168,76,0.4)" stroke-width="1.8"/>
-            <path d="M38 10v36M38 16h4a2 2 0 012 2v12a2 2 0 01-2 2h-4" stroke="rgba(201,168,76,0.4)" stroke-width="1.8"/>
-            <line x1="18" y1="28" x2="38" y2="28" stroke="rgba(201,168,76,0.55)" stroke-width="2.5"/>
-            <path d="M8 22v12M48 22v12" stroke="rgba(201,168,76,0.55)" stroke-width="2.5"/>
-          </svg>
-          <span class="text-gold-700 text-xs tracking-widest uppercase">Основной зал тренировок</span>
-        </div>
+        <img class="facility-img" src="gym2.png" alt="Тренажёрный зал Residence Fitness Club" />
         <div class="facility-content">
           <h3 class="font-display text-xl font-600 text-white mb-1">Основной зал</h3>
           <p class="text-dark-400 text-xs">500 кв.м профессионального силового и кардиооборудования</p>
@@ -1571,15 +1559,7 @@
 
       <!-- Small card 1 -->
       <div class="facility-card facility-lg rounded-sm" data-aos="fade-up" data-aos-delay="100">
-        <div class="img-placeholder w-full h-full">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="36" cy="10" r="5" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M8 28l8-8 6 5 6-10 6 5" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M4 38c4-5 6-5 10 0s6 5 10 0 6-5 10 0 6 5 10 0" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <path d="M4 44c4-5 6-5 10 0s6 5 10 0 6-5 10 0 6 5 10 0" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
-          </svg>
-          <span class="text-gold-700 text-xs tracking-widest uppercase text-center px-4">Бассейн</span>
-        </div>
+        <img class="facility-img" src="pool.png" alt="Бассейн Residence Fitness Club" />
         <div class="facility-content">
           <h3 class="font-display text-lg font-600 text-white mb-1">Бассейн</h3>
           <p class="text-dark-400 text-xs">Плавание и аквааэробика · раздельные дни</p>
@@ -1588,16 +1568,7 @@
 
       <!-- Small card 2 -->
       <div class="facility-card rounded-sm" data-aos="fade-up" data-aos-delay="200">
-        <div class="img-placeholder w-full h-full">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="13" r="5" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M14 44c0-6 4.5-10 10-10s10 4 10 10" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M24 18v6" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <path d="M19 28l5-4 5 4" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <path d="M10 36h28" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
-          </svg>
-          <span class="text-gold-700 text-xs tracking-widest uppercase">Женская студия</span>
-        </div>
+        <img class="facility-img" src="women%20zone.png" alt="Женская студия Residence Fitness Club" />
         <div class="facility-content">
           <h3 class="font-display text-lg font-600 text-white mb-1">Женская студия</h3>
           <p class="text-dark-400 text-xs">Пространство только для женщин · зеркала, амортизирующий пол</p>
@@ -1606,16 +1577,7 @@
 
       <!-- Small card 3 -->
       <div class="facility-card rounded-sm" data-aos="fade-up" data-aos-delay="300">
-        <div class="img-placeholder w-full h-full">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="34" cy="11" r="4" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M6 26l8-4 6 4 8-6 6 3" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M14 22l-4 8" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <path d="M20 26l2 8" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <line x1="4" y1="38" x2="44" y2="38" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
-          </svg>
-          <span class="text-gold-700 text-xs tracking-widest uppercase">Пилатес</span>
-        </div>
+        <img class="facility-img" src="pilates.png" alt="Пилатес Residence Fitness Club" />
         <div class="facility-content">
           <h3 class="font-display text-lg font-600 text-white mb-1">Групповые занятия · Пилатес</h3>
           <p class="text-dark-400 text-xs">Групповой и персональный пилатес · 12 занятий в абонементе</p>
@@ -1624,17 +1586,7 @@
 
       <!-- Small card 4 -->
       <div class="facility-card rounded-sm" data-aos="fade-up" data-aos-delay="400">
-        <div class="img-placeholder w-full h-full">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="9" r="4.5" stroke="rgba(201,168,76,0.45)" stroke-width="1.5"/>
-            <path d="M24 13v10" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
-            <path d="M14 19l10 4 10-4" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
-            <path d="M24 23l-6 10" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <path d="M24 23l8 8" stroke="rgba(201,168,76,0.35)" stroke-width="1.5"/>
-            <path d="M32 31l4-2" stroke="rgba(201,168,76,0.4)" stroke-width="1.8"/>
-          </svg>
-          <span class="text-gold-700 text-xs tracking-widest uppercase">Тхэквондо</span>
-        </div>
+        <img class="facility-img" src="taekwondoo.png" alt="Тхэквондо Residence Fitness Club" />
         <div class="facility-content">
           <h3 class="font-display text-lg font-600 text-white mb-1">Тхэквондо</h3>
           <p class="text-dark-400 text-xs">Для детей от 4 до 17 лет · 12 занятий в абонементе</p>
